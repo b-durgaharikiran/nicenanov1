@@ -22,7 +22,11 @@
 #endif
 
 // Application Address Space
+#ifdef S340 //S340 uses more flash
+#define USER_FLASH_START              MBR_SIZE+0xB000 // skip MBR included in SD hex
+#else
 #define USER_FLASH_START              MBR_SIZE // skip MBR included in SD hex
+#endif
 #define USER_FLASH_END                (BOOTLOADER_REGION_START - DFU_APP_DATA_RESERVED)
 
 // Bootloader start address
