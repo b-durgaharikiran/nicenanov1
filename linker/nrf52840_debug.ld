@@ -12,7 +12,11 @@ MEMORY
    *  APP_ERROR_CHECK_BOOL(*((uint32_t *)NRF_UICR_BOOT_START_ADDRESS) == BOOTLOADER_REGION_START);
    */
   /* due to lack of flash for debug, we will use reserved app to extend bootloader size */
+
   FLASH (rx) : ORIGIN = 0xF4000-28K, LENGTH = 0xFE000-0xF4000 - 1K + 28K
+
+  FLASH (rx) : ORIGIN = 0xF4000 - 40K, LENGTH = 0xFE000-0xF4000 - 2K + 40K /* 38 KB */
+
 
   BOOTLOADER_CONFIG (r): ORIGIN = 0xFE000 - 1K, LENGTH = 1K
 
